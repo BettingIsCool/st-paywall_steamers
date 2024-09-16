@@ -1,6 +1,8 @@
 import streamlit as st
 from st_paywall import add_auth
 
+st.write('geile sau')
+
 st.set_page_config(layout="wide")
 st.title("🎈 Tyler's Subscription app POC 🎈")
 st.balloons()
