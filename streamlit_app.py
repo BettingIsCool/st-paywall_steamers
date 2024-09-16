@@ -1,7 +1,4 @@
 import streamlit as st
-
-st.write('geil')
-
 from st_paywall import add_auth
 
 st.set_page_config(layout="wide")
