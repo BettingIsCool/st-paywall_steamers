@@ -52,6 +52,7 @@ def redirect_button(
 
 
 def is_active_subscriber(email: str) -> bool:
+    stripe.api_key = get_api_key()
     product_id = st.secrets["stripe_product_id"]
     is_active = False
     customers = stripe.Customer.list(email=email)
