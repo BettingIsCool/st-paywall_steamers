@@ -51,7 +51,8 @@ def redirect_button(
     )
 
 
-def is_active_customer(email: str, product_id: str) -> bool:
+def is_active_customer(email: str) -> bool:
+    product_id = st.secrets["stripe_product_id"]
     is_active = False
     customers = stripe.Customer.list(email=email)
     if len(customers.data) > 0:
