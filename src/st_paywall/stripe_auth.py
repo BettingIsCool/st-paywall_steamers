@@ -53,14 +53,14 @@ def redirect_button(
 
 def is_active_subscriber(email: str) -> bool:
     stripe.api_key = get_api_key()
-    product_id = st.secrets["stripe_product_id"]
+    product_ids = st.secrets["stripe_product_ids"]
     is_active = False
     customers = stripe.Customer.list(email=email)
     if len(customers.data) > 0:
         for customer in customers.auto_paging_iter():
             subscriptions = stripe.Subscription.list(customer=customer.id)
             for subscription in subscriptions.auto_paging_iter():
-                if subscription['plan']['active'] and subscription['plan']['product'] == product_id:
+                if subscription['plan']['active'] and subscription['plan']['product'] in product_ids:
                     is_active = True
 
     st.session_state.subscriptions = is_active
